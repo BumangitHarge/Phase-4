@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upgrademypc</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>
+            <img src="images/HB_Logo.png" alt="Logo">
+            Computers
+        </h1>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="upgrademypc.html" class="active">Upgrade My PC</a>
+            <a href="buildapc.html">Build a PC</a>
+            <a href="contacts.html">Contacts</a>
+    </nav>
+    </header>
+    <main class="upgrade-page">
+
+        <h2>Upgrade My Current PC</h2>
+        <p class="subtext">Select your current parts and get upgrade suggestions.</p>
+
+        <div class="upgrade-box">
+
+            <label>CPU</label>
+            <select id="cpu">
+                <option value="0">Select CPU</option>
+                <option value="i3">Intel Core i3</option>
+                <option value="i5">Intel Core i5</option>
+                <option value="i7">Intel Core i7</option>
+                <option value="i9">Intel Core i9</option>
+                <option value="ryzen3">AMD Ryzen 3</option>
+                <option value="ryzen5">AMD Ryzen 5</option>
+                <option value="ryzen7">AMD Ryzen 7</option>
+                <option value="ryzen9">AMD Ryzen 9</option>
+            </select>
+
+            <label>RAM</label>
+            <select id="ram">
+                <option value="0">Select RAM</option>
+                <option value="4">4GB</option>
+                <option value="8">8GB</option>
+                <option value="16">16GB</option>
+                <option value="32">32GB</option>
+                <option value="64">64GB</option>
+                <option value="128">128GB</option>
+            </select>
+
+            <label>Storage</label>
+            <select id="storage">
+                <option value="0">Select Storage</option>
+                <option value="hdd">HDD</option>
+                <option value="sata ssd">SATA SSD</option>
+                <option value="nvme ssd">NVMe m.2 SSD</option>
+                <option value="nvme gen4">NVMe Gen4 SSD</option>
+            </select>
+
+            <label>Graphics Card</label>
+            <select id="gpu">
+                <option value="0">Select Graphics Card</option>
+                <option value="none">Integrated Graphics</option>
+                <option value="gtx1050">GTX 1050</option>
+                <option value="gtx1650">GTX 1650</option>
+                <option value="rx6600">RX 6600</option>
+                <option value="rtx3060">RTX 3060</option>
+                <option value="rtx4070">RTX 4070</option>
+                <option value="rx7800xt">RX 7800 XT</option>
+            </select>
+
+            <button onclick="checkUpgrade()">Check Upgrade</button>
+
+            <div class="result" id="result">
+                Your upgrade suggestions will appear here.
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+    function checkUpgrade(){
+
+        let cpu = document.getElementById("cpu").value;
+        let ram = document.getElementById("ram").value;
+        let storage = document.getElementById("storage").value;
+        let gpu = document.getElementById("gpu").value;
+
+        let text = "<h3>Recommended Upgrades:</h3>";
+
+        // CPU suggestions
+        if(cpu === "0"){
+            text += "<p>❌ Please select a CPU option</p>";
+        } else if(cpu === "i3" || cpu === "ryzen3"){
+            text += "<p>✅ Upgrade CPU to Intel Core i5 or AMD Ryzen 5 for better performance</p>";
+        } else if(cpu === "i5" || cpu === "ryzen5"){
+            text += "<p>✅ Consider upgrading to Intel Core i7 or AMD Ryzen 7 for high-end tasks</p>";
+        } else if(cpu === "i7" || cpu === "ryzen7"){
+            text += "<p>✅ For gaming/streaming, upgrade to Intel Core i9 or AMD Ryzen 9</p>";
+        }
+
+        // RAM suggestions
+        if(ram === "0"){
+            text += "<p>❌ Please select a RAM option</p>";
+        } else if(ram < 8){
+            text += "<p>✅ Upgrade RAM to at least 16GB for modern applications</p>";
+        } else if(ram == 8){
+            text += "<p>✅ Upgrade RAM to 32GB for smoother multitasking and gaming</p>";
+        } else if(ram >= 32){
+            text += "<p>✅ Your RAM is sufficient; consider faster DDR5 if supported</p>";
+        }
+
+        // Storage suggestions
+        if(storage === "0"){
+            text += "<p>❌ Please select a Storage option</p>";
+        } else if(storage === "hdd"){
+            text += "<p>✅ Replace HDD with NVMe SSD for significantly faster speeds</p>";
+        } else if(storage === "sata ssd"){
+            text += "<p>✅ Upgrade to NVMe SSD for better performance</p>";
+        } else if(storage === "nvme ssd"){
+            text += "<p>✅ Consider NVMe Gen4 SSD for future-proofing</p>";
+        }
+
+        // GPU suggestions
+        if(gpu === "0"){
+            text += "<p>❌ Please select a Graphics Card option</p>";
+        } else if(gpu === "none"){
+            text += "<p>✅ Add a dedicated GPU like RTX 3060 for gaming and graphics tasks</p>";
+        } else if(gpu === "gtx1050" || gpu === "gtx1650"){
+            text += "<p>✅ Upgrade to RTX 4070 or RX 7800 XT for modern gaming</p>";
+        } else if(gpu === "rx6600" || gpu === "rtx3060"){
+            text += "<p>✅ For 4K gaming, consider RTX 4070 or higher</p>";
+        }
+
+        // Overall check
+        if((cpu === "i7" || cpu === "ryzen7" || cpu === "i9" || cpu === "ryzen9") && ram >= 32 && (storage === "nvme ssd" || storage === "nvme gen4") && (gpu === "rtx4070" || gpu === "rx7800xt" || gpu === "rtx3060" || gpu === "rx6600")){
+            text += "<p>🔥 Your PC is well-equipped. Consider upgrading PSU or cooling for overclocking.</p>";
+        } else if(ram >= 16 && (storage !== "hdd") && gpu !== "none"){
+            text += "<p>👍 Your PC is decent. Targeted upgrades can enhance performance.</p>";
+        }
+
+        document.getElementById("result").innerHTML = text;
+    }
+    </script>
+    <footer>
+        <p>2026 HB Computers | All rights reserved</p>
+    </footer>
+</body>
+</html>

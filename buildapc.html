@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a PC</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>
+            <img src="images/HB_Logo.png" alt="Logo">
+            Computers
+        </h1>
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="upgrademypc.html">Upgrade My PC</a>
+            <a href="buildapc.html" class="active">Build a PC</a>
+            <a href="contacts.html">Contacts</a>
+    </nav>
+    </header>
+    <main class="builder-page">
+
+        <h2>Build Your Custom PC</h2>
+
+        <div class="builder-container">
+
+            <!-- LEFT SIDE -->
+            <div class="builder-form">
+
+                <h3>Choose Your Parts</h3>
+
+                <label>CPU</label>
+                <select id="cpuSelect" onchange="updateBuild()">
+                <option value="0">Select CPU</option>
+                <option value="4000">AMD Ryzen 3 3200G - ₱4,000</option>
+                <option value="6800">AMD Ryzen 5 3600 - ₱6,800</option>
+                <option value="7500">AMD Ryzen 5 5600G - ₱7,500</option>
+                <option value="11500">AMD Ryzen 7 5700X - ₱11,500</option>
+                <option value="5500">Intel i3-12100 - ₱5,500</option>
+                <option value="9500">Intel i5-12400F - ₱9,500</option>
+                </select>
+
+                <label>Motherboard</label>
+                <select id="motherboardSelect" onchange="updateBuild()">
+                <option value="0">Select Motherboard</option>
+                <option value="4000">GIGABYTE B450M DS3H - ₱4,000</option>
+                <option value="6000">GIGABYTE B660M DS3H - ₱6,000</option>
+                <option value="3800">MSI A520 Pro - ₱3,800</option>
+                <option value="3500">ASUS H610M-K - ₱3,500</option>
+                <option value="5500">MSI B550M-A Pro - ₱5,500</option>
+                <option value="8500">AORUS X570 - ₱8,500</option>
+                </select>
+
+                <label>GPU</label>
+                <select onchange="updateBuild()">
+                <option value="0">Select GPU</option>
+                <option value="9000">GIGABYTE GTX 1650 - ₱9,000</option>
+                <option value="18000">GIGABYTE RTX 3060 - ₱18,000</option>
+                <option value="22000">GIGABYTE RTX 4060 - ₱22,000</option>
+                <option value="15000">ASUS RX 6600 - ₱15,000</option>
+                <option value="35000">ASUS RTX 4070 - ₱35,000</option>
+                <option value="13500">GIGABYTE GTX 1660 Super - ₱13,500</option>
+                </select>
+
+                <label>RAM</label>
+                <select id="ramSelect" onchange="updateBuild()">
+                <option value="0">Select RAM</option>
+                <option value="1800">Kingston 8GB DDR4 - ₱1,800</option>
+                <option value="3200">Kingston 16GB DDR4 - ₱3,200</option>
+                <option value="6000">Kingston 32GB DDR4 - ₱6,000</option>
+                <option value="2800">T-Force 8GB DDR5 - ₱2,800</option>
+                <option value="5000">T-Force 16GB DDR5 - ₱5,000</option>
+                <option value="9000">T-Force 32GB DDR5 - ₱9,000</option>
+                </select>
+
+                <label>Storage</label>
+                <select onchange="updateBuild()">
+                <option value="0">Select Storage</option>
+                <option value="2500">Samsung 256GB SSD - ₱2,500</option>
+                <option value="3500">Samsung 512GB SSD - ₱3,500</option>
+                <option value="5000">Samsung 1TB SSD - ₱5,000</option>
+                <option value="1500">GIGABYTE 256GB SATA SSD - ₱1,500</option>
+                <option value="2500">GIGABYTE 512GB SATA SSD - ₱2,500</option>
+                <option value="3500">GIGABYTE 1TB SATA SSD - ₱3,500</option>
+                </select>
+
+                <label>Power Supply</label>
+                <select onchange="updateBuild()">
+                <option value="0">Select Power Supply</option>
+                <option value="1800">Corsair CV450W - ₱1,800</option>
+                <option value="2500">Corsair CX550W - ₱2,500</option>
+                <option value="3500">Corsair CX650W - ₱3,500</option>
+                <option value="4500">Corsair CX750W - ₱4,500</option>
+                <option value="5500">Corsair RM850W - ₱5,500</option>
+                <option value="7000">Corsair RM1000W - ₱7,000</option>
+                </select>
+
+                <label>Case</label>
+                <select onchange="updateBuild()">
+                <option value="0">Select Case</option>
+                <option value="1395">Darkflash Micro-ATX Case - ₱1,395</option>
+                <option value="1428">Trendsonic Micro-ATX Case - ₱1,428</option>
+                <option value="3450">NZXT H3 Micro-ATX Case - ₱3,450</option>
+                <option value="3650">Deepcool Mid-Tower ATX Case - ₱3,650</option>
+                <option value="5850">Corsair Mid-Tower ATX Case - ₱5,850</option>
+                <option value="9750">ASUS TUF Mid-Tower ATX Case - ₱9,750</option>
+                </select>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="builder-summary">
+
+                <h3>🧾 Build Summary</h3>
+
+                <ul id="summaryList">
+                <li>Select components to begin</li>
+                </ul>
+                <p id="compatibilityMessage" class="compatibility-message"></p>
+
+                <h2>Total: ₱<span id="totalPrice">0</span></h2>
+
+                <a href="buildapc.html"><button>Checkout</button></a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>2026 HB Computers | All rights reserved</p>
+    </footer>
+    <script>
+        function updateBuild() {
+        const cpu = document.getElementById("cpuSelect");
+        const motherboard = document.getElementById("motherboardSelect");
+        const selects = document.querySelectorAll(".builder-form select");
+        const summary = document.getElementById("summaryList");
+        const compatibilityMessage = document.getElementById("compatibilityMessage");
+        const totalDisplay = document.getElementById("totalPrice");
+
+        let total = 0;
+        summary.innerHTML = "";
+        compatibilityMessage.textContent = "";
+        compatibilityMessage.classList.remove("error");
+
+        selects.forEach(select => {
+            const price = parseInt(select.value);
+            const text = select.options[select.selectedIndex].text;
+            total += price;
+            const li = document.createElement("li");
+            li.textContent = text;
+            summary.appendChild(li);
+        });
+
+        const issues = [];
+        const cpuText = cpu.options[cpu.selectedIndex].text;
+        const moboText = motherboard.options[motherboard.selectedIndex].text;
+        const selectedRam = document.getElementById("ramSelect").options[document.getElementById("ramSelect").selectedIndex].text;
+
+        const isAmdCpu = cpuText.includes("AMD");
+        const isIntelCpu = cpuText.includes("Intel");
+        const isAmdMobo = moboText.includes("B450") || moboText.includes("A520") || moboText.includes("B550") || moboText.includes("X570");
+        const isIntelMobo = moboText.includes("B660") || moboText.includes("H610");
+        const isDDR5 = selectedRam.includes("DDR5");
+        const isDDR4 = selectedRam.includes("DDR4");
+        const moboSupportsDDR5 = moboText.includes("B660") || moboText.includes("H610");
+        const moboSupportsDDR4 = moboText.includes("B450") || moboText.includes("A520") || moboText.includes("B550") || moboText.includes("X570") || moboText.includes("B660") || moboText.includes("H610");
+
+        if (cpu.value !== "0" && motherboard.value !== "0") {
+            if (isIntelCpu && isAmdMobo) {
+                issues.push("Intel CPU is not compatible with this AMD motherboard.");
+            }
+            if (isAmdCpu && isIntelMobo) {
+                issues.push("AMD CPU is not compatible with this Intel motherboard.");
+            }
+        }
+
+        if (selectedRam !== "Select RAM" && motherboard.value !== "0") {
+            if (isDDR5 && !moboSupportsDDR5) {
+                issues.push("DDR5 RAM is not compatible with this motherboard.");
+            }
+            if (isDDR4 && !moboSupportsDDR4) {
+                issues.push("DDR4 RAM is not compatible with this motherboard.");
+            }
+        }
+
+        if (issues.length) {
+            compatibilityMessage.textContent = "Compatibility issue: " + issues.join(" ");
+            compatibilityMessage.classList.add("error");
+        }
+
+        totalDisplay.textContent = total.toLocaleString();
+        }
+
+        updateBuild();
+    </script>
+</body>
+</html>
